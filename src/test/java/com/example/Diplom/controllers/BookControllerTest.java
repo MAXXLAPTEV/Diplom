@@ -77,7 +77,7 @@ public class BookControllerTest {
     }
 
     @Test
-    public void MustFindBookId() throws Exception{
+    public void MustFindBookById() throws Exception{
         Book book = addBook("Анджей Сапковский", "последнее желание", 480, 1500f);
         ResultActions resultActions = this.mockMvc.perform(get("/book/" + book.getId()));
         String result = resultActions.andReturn().getResponse().getContentAsString();
@@ -88,7 +88,7 @@ public class BookControllerTest {
         }
 
     @Test
-    public void MustDeleteBook() throws Exception{
+    public void MustDeleteBookById() throws Exception{
         Book book = addBook("Анджей Сапковский", "последнее желание", 480, 1500f);
         ResultActions resultActions = this.mockMvc.perform(delete("/book/" + book.getId()));
         String result = resultActions.andReturn().getResponse().getContentAsString();
