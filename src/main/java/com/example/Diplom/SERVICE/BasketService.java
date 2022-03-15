@@ -18,8 +18,9 @@ public class BasketService {
 
     private final BasketRepo basketRepo;
     private final CustomerRepo customerRepo;
-    private final OrderRepo orderRepo;
+    //private final OrderRepo orderRepo;
     private final ObjectMapper objectMapper;
+
 
     private Basket findBasket(Customer customer) {
         return basketRepo.findByCustomerId(customer.getId());
@@ -33,10 +34,11 @@ public class BasketService {
         return basketRepo.getById(basketRequest.getProductId());
     }
 
-    private void deleteBasket(BasketRequest basketRequest){
+    public BasketResponse deleteBasket(BasketRequest basketRequest){
         Customer customer = findCustomer(basketRequest);
         Basket basket = findBasket(customer);
         basketRepo.delete(basket);
+        return null;
     }
 
     private Basket CreateBasket(Customer customer) {
